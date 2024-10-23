@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sessions</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        .divider {
+            height: 1px;
+            background-color: rgba(0, 0, 0, .15);
+        }
+        .text-justify {
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <div class="row align-items-center mb-4">
+            <span class="fw-bold w-auto ce text-align=center">
+                Sessions Management
+            </span>
+            <button class="btn btn-primary w-auto" onclick="window.location='sessions-form.html'">
+                New Session
+            </button>
+        </div>
+
+        <div class="divider"></div>
+        <table class="table table-striped table-bordered mt-4">
+            <thead>
+                <tr class="table-bordered">
+                    <th scope="col">Id</th>
+                    <th scope="col">TextId</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Words</th>
+                </tr>
+            </thead>
+            <tbody id="session-table">
+            </tbody>
+        </table>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
+    crossorigin="anonymous"></script>
+    <script src="js/request.js"></script>
+    <script src="js/sessions.js"></script>
+    <script>
+        window.onload = function(){
+            loadData();
+            
+        }
+    </script>
+</body>
+</html>
