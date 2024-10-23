@@ -25,14 +25,14 @@ function loadData() {
     request.onerror = function(){
         table.innerHTML = `
             <tr>
-                <td colspan="5">Error al recuperar los datos.</td>
+                <td colspan="5">Error getting data.</td>
             </tr>
         `;
     }
 }
 
 
-function saveSession(){
+function saveSession() {
     let time = document.getElementById('session-time').value
     let id = document.getElementById('session-id').value
     let textId = document.getElementById('session-textId').value
@@ -51,7 +51,7 @@ function saveSession(){
     }
 }
 
-function loadSession(idsession){
+function loadSession(idsession) {
     let request = sendRequest('sessions/list/'+idsession, 'GET', '')
     let time = document.getElementById('session-time')
     let id = document.getElementById('session-id')
@@ -73,14 +73,14 @@ function loadSession(idsession){
     }
 }
 
-function deleteSession(){
+function deleteSession() {
     let id = document.getElementById('session-id').value
     let request = sendRequest('sessions/'+ id , 'DELETE', '')
     request.onload = function(){
-        alert('Registro Eliminado Exitosamente.')
+        alert('Successfully deleted session')
         window.location = 'sessions.html';
     }
     request.onerror = function(){
-        alert('Error al guardar los cambios.')
+        alert('Error saving changes')
     }
 }
