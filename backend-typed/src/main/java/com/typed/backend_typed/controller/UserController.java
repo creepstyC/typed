@@ -63,9 +63,15 @@ public class UserController {
         return new ResponseEntity<>(obj, HttpStatus.OK);
     }
     
-    @PostMapping("/login")
+    @PostMapping("/loginclient")
     public int login(@RequestBody LoginDTO user) {
         int responseLogin = userService.login(user);
         return responseLogin;
+    }
+    
+    
+    @PostMapping("/login")
+    public ResponseEntity<?> loginClient(@RequestBody LoginDTO user) {
+        return userService.signin(user);
     }
 }

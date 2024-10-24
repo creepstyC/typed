@@ -31,10 +31,6 @@ function loadData() {
 function saveText() {
     let id = document.getElementById('text-id').value
     let content = document.getElementById('text-content').value
-    if (!content.trin()) {
-        alert('Content cannot be empty!');
-        return;
-    }
     let data = {'id': id,'content':content}
     console.log(data);
     let request = sendRequest('texts/', id ? 'PUT' : 'POST', data)
