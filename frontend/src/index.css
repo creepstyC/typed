@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-dark-bg text-light-text font-mono;
+}
+
+button {
+  @apply bg-olive text-white rounded p-2 hover:bg-dark-olive;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply text-light-text;
+}
+
+ul {
+  @apply text-light-text;
+}
+
+input {
+  @apply bg-dark-olive text-light-text border border-gray-600 rounded p-2;
+}
