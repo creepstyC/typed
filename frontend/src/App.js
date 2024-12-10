@@ -1,49 +1,51 @@
 import React, { useState } from 'react';
-import WordList from './components/WordList';
 import TypingTest from './components/TypingTest';
+import WordList from './components/WordList';
+import Login from './pages/auth/Login';
 
 const App = () => {
-  const [view, setView] = useState('typingTest');
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [userEmail, setUserEmail] = useState('');
 
-  return (
-    <div className="min-h-screen bg-dark-bg text-light-text font-mono flex flex-col items-center p-4">
-      {/* Título */}
-      <header className="bg-olive text-white w-full py-4 shadow-md text-center">
-        <h1 className="text-3xl font-bold">typed</h1>
-      </header>
+    const handleLogin = (email) => {
+        setUserEmail(email);
+        setIsAuthenticated(true);
+    };
 
-      {/* Navegación */}
-      <nav className="mt-6 flex gap-4">
-        <button
-          onClick={() => setView('wordList')}
-          className={`px-4 py-2 rounded ${
-            view === 'wordList' ? 'bg-olive text-white' : 'bg-gray-200 text-black hover:bg-gray-300'
-          }`}
-        >
-          words
-        </button>
-        <button
-          onClick={() => setView('typingTest')}
-          className={`px-4 py-2 rounded ${
-            view === 'typingTest' ? 'bg-olive text-white' : 'bg-gray-200 text-black hover:bg-gray-300'
-          }`}
-        >
-          test
-        </button>
-      </nav>
+    const handleLogout = () => {
+        setUserEmail('');
+        setIsAuthenticated(false);
+    };
 
-      {/* Vista dinámica */}
-      <main className="mt-8 w-full max-w-4xl">
-        {view === 'wordList' && <WordList />}
-        {view === 'typingTest' && <TypingTest />}
-      </main>
-
-      {/* Pie de página */}
-      <footer className="bg-olive text-white w-full py-4 mt-auto text-center">
-        <p>{new Date().getFullYear()} typed. GNU General Public License.</p>
-      </footer>
-    </div>
-  );
+    return (
+        <div className="bg-gray-900 min-h-screen text-white">
+            <header className="bg-olive-600 text-center py-4 text-xl font-bold">
+                typed
+            </header>
+            <main className="p-8">
+                {!isAuthenticated ? (
+                    <Login onLogin={handleLogin} />
+                ) : (
+                    <div>
+                        <div className="flex justify-between items-center mb-4">
+                            <h1 className="text-2xl font-bold">Welcome, {userEmail}</h1>
+                            <button
+                                onClick={handleLogout}
+                                className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-500"
+                            >
+                                Logout
+                            </button>
+                        </div>
+                        <TypingTest />
+                        <WordList />
+                    </div>
+                )}
+            </main>
+            <footer className="bg-olive-600 text-center py-4">
+                2024 typed. GNU General Public License.
+            </footer>
+        </div>
+    );
 };
 
 export default App;

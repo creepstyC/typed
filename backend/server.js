@@ -5,6 +5,7 @@ const statsRoutes = require('./routes/statsRoutes');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/db');
+const authRoutes = require('./routes/authRoutes');
 
 dotenv.config();
 connectDB();
@@ -20,6 +21,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/words', wordRoutes);
 app.use('/api/stats', statsRoutes);
+app.use('/api/auth', authRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
